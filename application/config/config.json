@@ -1,0 +1,17 @@
+{
+    "database" : {
+        "host" : "localhost",
+        "user" : "ageesh",
+        "password": "123456",
+        "dbname":"agarro"
+    },
+    "header" :[{
+			    "patient" : [{"My Profile" :"\\myprofile"},{"My Visit" :""}],
+			    "provider" :[{}],
+			    "receptionist" :[{}],
+			    "guest" : ""
+			    
+    }],
+    "controllers" : {"index" : "IndexController","patient" :"PatientController"}
+    
+}
