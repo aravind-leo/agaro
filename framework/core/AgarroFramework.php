@@ -29,6 +29,8 @@ class AgarroFramework {
         
         define("CONTROLLER_PATH", APP_PATH . "controllers" . DS);
         
+        define ("COMPONENT_PATH", APP_PATH . "components" .DS);
+        
         define("MODEL_PATH", APP_PATH . "models" . DS);
         
         define("VIEW_PATH", APP_PATH . "views" . DS);
@@ -60,8 +62,13 @@ class AgarroFramework {
          // if you put json_decode($jsonStr, true), it will convert the json string to associative array
         $GLOBALS['config']  = json_decode($jsonStr);
         
-      
+        $agaroConfig =    $GLOBALS['config'] ;
+       // var_dump($GLOBALS['config']);
         
+      
+        session_start();
+        
+        include COMPONENT_PATH."header.php";
         
         
     }
@@ -111,6 +118,7 @@ class AgarroFramework {
             if(isset($url_array[0]) && !empty($url_array[0]) ){
                 $action = $url_array[0];
                 array_shift($url_array);
+                $action = $action."Action";
             
             }
             // The third part are the parameters

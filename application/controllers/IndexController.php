@@ -24,7 +24,7 @@ class IndexController extends Controller{
     
     public function menuAction(){
         
-        include CURR_VIEW_PATH . "menu.html";
+       echo "**************** MENU *************";
         
     }
     
