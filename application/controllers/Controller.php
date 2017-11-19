@@ -3,7 +3,7 @@
 
 class Controller{
     
-    // Base Controller has a property called $loader, it is an instance of Loader class(introduced later)
+   
     
     protected $loader;
     
