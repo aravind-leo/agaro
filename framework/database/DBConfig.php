@@ -1,54 +1,86 @@
 <?php
-
-class DBConfig
-{
-
+class DBManager {
+     
+    private $host;
     private $username;
-
     private $password;
+    private $dbname;
+    private $con;
     
-    private $hostname;
-
-    private $dbhandle;
-
-    function __construct($username, $password, $host)
+    public function __construct(){
+        $DBconfig = $GLOBALS['config'];
+        $this->host = $DBconfig->database->host;
+        $this->dbname =  $DBconfig->database->agarro;
+        $this->username =  $DBconfig->database->user;
+        $this->password =  $DBconfig->database->password;
+    } 
+    /*
+     * 
+     * By default it will connect with the config db, we can specify different DB as parameter
+     * 
+     */
+    public function connect($dbname = $this->dbname)
     {
-        $this->username = $username;
-        $this->password = $password;
-        $this->hostname = $host;
-    }
-
-    public function createDBConnection($dbName)
-    {
-        // connection to the database
-        $this->dbhandle = mysql_connect($host, $username, $password) or die("Unable to connect to MySQL");
-        echo "Connected to MySQL<br>";
+        $this->con = mysql_connect(  $this->host,  $this->username, $this->password)
+        or die ("<br/>Could not connect to MySQL server");
         
-        // select a database to work with
-        $selected = mysql_select_db($dbName, $this->dbhandle) or die("Could not select DB");
-    }
-
-    public function getResults($query)
-    {
-        // execute the SQL query and return records
-        $result = mysql_query($query);
-        return result;
-    }
-
-    public function insertData($query)
-    {
+        mysql_select_db($dbname ,$this->con)
+        or die ("<br/>Could not select the indicated database");
         
-    }
-    
-    public function updateDB($query){
-        
+        return $this->con;
     }
     
     
-    // close the connection
-    public function closeConnection()
+    /**
+     * Select query
+     * 
+     * @param unknown $sql
+     * @return unknown
+     */
+    public function getSelectResults($sql)
     {
-        mysql_close($this->dbhandle);
+        $res = mysql_query($sql);
+        if(mysql_num_rows($res)!=0) {
+            while($rowData = mysql_fetch_array($res)) {
+                var_dump($rowData);
+                return $rowData;
+            }
+        }
     }
+    
+    
+    /*
+     * insert query, it will return the last inserted id
+     * 
+     */
+    public function insertData($sql)
+    {
+        if ($this->con->query($sql) === TRUE) {
+            $last_id = mysql_insert_id();
+            return $last_id;
+        }
+    }
+    
+    
+    public function updateData($sql){
+        
+        if ($this->con->query($sql) === TRUE) {
+           return true;
+        }else {
+            return false;
+        }
+    }
+    
+    /**
+     *
+     * Close the database connection
+     */
+    public function close_connection()
+    {
+        $this->con = null;
+       
+    }
+        
 }
+
 ?>
