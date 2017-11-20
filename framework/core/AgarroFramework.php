@@ -46,6 +46,10 @@ class AgarroFramework {
         
         define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS);
         
+        define("DAL_PATH", APP_PATH . "database". DS);
+        
+        define("SERVICE_PATH", APP_PATH. "service". DS);
+        
         
         // Load core classes
         
