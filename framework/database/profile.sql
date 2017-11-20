@@ -85,7 +85,6 @@ CREATE TABLE `userdetails` (
 
 CREATE TABLE `medicalquestions` (
   `id` int(11) NOT NULL,
-  `userId` int(11) DEFAULT NULL,
   `questionText` varchar(500) DEFAULT NULL,
   `displayOrder` varchar(50) DEFAULT NULL,
   `updatedBy` int(11) DEFAULT NULL,
@@ -93,8 +92,7 @@ CREATE TABLE `medicalquestions` (
   `createdBy` int(11) DEFAULT NULL,
   `createdDate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `userId` (`userId`),
-  CONSTRAINT `medicalquestions_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+  KEY `userId` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `medicalanswer` (
@@ -102,6 +100,7 @@ CREATE TABLE `medicalanswer` (
   `medicalQuestionId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `answer` varchar(500) DEFAULT NULL,
+  'type' varchar(100) DEFAULT NULL,
   `updatedBy` int(11) DEFAULT NULL,
   `updatedDate` datetime DEFAULT NULL,
   `createdBy` int(11) DEFAULT NULL,
@@ -306,3 +305,127 @@ CREATE TABLE `providerbreaks` (
   CONSTRAINT `providerbreaks_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `generalnotification` (
+  `id` int(11) NOT NULL,
+  `receiverId` int(11) DEFAULT NULL,
+  `subject` varchar(100) DEFAULT NULL,
+  `body` varchar(500) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `actionTaken` varchar(50) DEFAULT NULL,
+  `isActive` tinyint(4) DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `receiverId` (`receiverId`),
+  CONSTRAINT `generalnotification_ibfk_1` FOREIGN KEY (`receiverId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `patientdiagnosis` (
+  `id` int(11) NOT NULL,
+  `providerId` int(11) DEFAULT NULL,
+  `patientId` int(11) DEFAULT NULL,
+  `type` varchar(100) DEFAULT NULL,
+  `code` varchar(100) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `comments` varchar(500) DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `providerId` (`providerId`),
+  KEY `patientId` (`patientId`),
+  CONSTRAINT `patientdiagnosis_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `patientdiagnosis_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `patientprescription` (
+  `id` int(11) NOT NULL,
+  `patientid` int(11) DEFAULT NULL,
+  `providerId` int(11) DEFAULT NULL,
+  `drugType` varchar(100) DEFAULT NULL,
+  `drugCode` varchar(100) DEFAULT NULL,
+  `comments` varchar(500) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `billAmount` int(11) DEFAULT NULL,
+  `frequency` varchar(100) DEFAULT NULL,
+  `dose` varbinary(50) DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `patientid` (`patientid`),
+  KEY `providerId` (`providerId`),
+  CONSTRAINT `patientprescription_ibfk_1` FOREIGN KEY (`patientid`) REFERENCES `user` (`userId`),
+  CONSTRAINT `patientprescription_ibfk_2` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `patientprocedure` (
+  `id` int(11) NOT NULL,
+  `providerId` int(11) DEFAULT NULL,
+  `patientId` int(11) DEFAULT NULL,
+  `procedureCode` varchar(100) DEFAULT NULL,
+  `dxCode` varchar(100) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `billedAmount` int(11) DEFAULT NULL,
+  `comments` varchar(100) DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `providerId` (`providerId`),
+  KEY `patientId` (`patientId`),
+  CONSTRAINT `patientprocedure_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `patientprocedure_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `patientrecommendation` (
+  `id` int(11) DEFAULT NULL,
+  `providerId` int(11) DEFAULT NULL,
+  `patientId` int(11) DEFAULT NULL,
+  `recommendation` varchar(200) DEFAULT NULL,
+  `comments` varchar(200) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  KEY `providerId` (`providerId`),
+  KEY `patientId` (`patientId`),
+  CONSTRAINT `patientrecommendation_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `patientrecommendation_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `providerconsultant` (
+  `id` int(11) NOT NULL,
+  `providerId` int(11) DEFAULT NULL,
+  `patientId` int(11) DEFAULT NULL,
+  `transportationMode` varchar(100) DEFAULT NULL,
+  `visitType` varchar(100) DEFAULT NULL,
+  `bp` varchar(100) DEFAULT NULL,
+  `height` varchar(100) DEFAULT NULL,
+  `weight` varchar(100) DEFAULT NULL,
+  `rr` varchar(100) DEFAULT NULL,
+  `temp` varchar(100) DEFAULT NULL,
+  `bmi` varchar(100) DEFAULT NULL,
+  `paymentMode` varchar(100) DEFAULT NULL,
+  `isShared` varchar(100) DEFAULT NULL,
+  `voiceRecordURL` varchar(150) DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDate` datetime DEFAULT NULL,
+  `createdBy` int(11) DEFAULT NULL,
+  `createdDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `providerId` (`providerId`),
+  KEY `patientId` (`patientId`),
+  CONSTRAINT `providerconsultant_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `providerconsultant_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
