@@ -2,7 +2,7 @@
 
 require_once("Controller.php");
 
-class IndexController extends Controller{
+class IndexController extends Controller {
     
     public function mainAction(){
         
@@ -18,7 +18,7 @@ class IndexController extends Controller{
         
         // Load View template
         
-        include  CURR_VIEW_PATH . "index.html";
+        include  VIEW_PATH . "selection.php";
         
     }
     

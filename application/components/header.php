@@ -1,6 +1,6 @@
 <?php
 
-$user = "patient";
+$user = "guest";
 ?>
 <html>
 

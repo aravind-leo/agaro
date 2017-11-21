@@ -5,12 +5,12 @@ class Controller{
     
    
     
-    protected $loader;
+    public $config;
     
     
     public function __construct(){
         
-      //  $this->loader = new Loader();
+        $this->config = $GLOBALS['config'];
         
     }
     

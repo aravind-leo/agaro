@@ -9,6 +9,8 @@ class AgarroFramework {
         self::autoload();
         
         self::dispatch($url);
+        
+        include COMPONENT_PATH."footer.php";
     }
     
     
@@ -104,7 +106,7 @@ class AgarroFramework {
     private static function dispatch($url) {
         $url_array = array();
         $controller = "index";
-        $action = "mainAction";
+        $action = "indexAction";
         if (isset($url) && ! empty($url)) {
             $url_array = explode("/", $url);
             
