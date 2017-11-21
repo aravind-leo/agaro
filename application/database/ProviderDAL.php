@@ -1,6 +1,6 @@
 <?php
 
-include DB_PATH."DBConfig.php";
+include DB_PATH."DBManager.php";
 
 class ProviderDAL{
     
