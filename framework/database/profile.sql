@@ -1,3 +1,11 @@
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`agarro` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `agarro`;
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -12,6 +20,10 @@ CREATE TABLE `user` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `state` */
+
+DROP TABLE IF EXISTS `state`;
+
 CREATE TABLE `state` (
   `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
@@ -21,6 +33,11 @@ CREATE TABLE `state` (
   `updatedBy` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `city` */
+
+DROP TABLE IF EXISTS `city`;
+
 
 CREATE TABLE `city` (
   `id` int(11) NOT NULL,
@@ -34,6 +51,11 @@ CREATE TABLE `city` (
   KEY `stateId` (`stateId`),
   CONSTRAINT `city_ibfk_1` FOREIGN KEY (`stateId`) REFERENCES `state` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `address` */
+
+DROP TABLE IF EXISTS `address`;
+
 
 CREATE TABLE `address` (
   `id` int(11) NOT NULL,
@@ -59,6 +81,11 @@ CREATE TABLE `address` (
   CONSTRAINT `address_ibfk_3` FOREIGN KEY (`cityId`) REFERENCES `city` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `userdetails` */
+
+DROP TABLE IF EXISTS `userdetails`;
+
+
 CREATE TABLE `userdetails` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
@@ -83,6 +110,10 @@ CREATE TABLE `userdetails` (
   CONSTRAINT `userdetails_ibfk_2` FOREIGN KEY (`addressId`) REFERENCES `address` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `medicalquestions` */
+
+DROP TABLE IF EXISTS `medicalquestions`;
+
 CREATE TABLE `medicalquestions` (
   `id` int(11) NOT NULL,
   `questionText` varchar(500) DEFAULT NULL,
@@ -91,9 +122,12 @@ CREATE TABLE `medicalquestions` (
   `updatedDate` datetime DEFAULT NULL,
   `createdBy` int(11) DEFAULT NULL,
   `createdDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userId` (`userId`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `medicalanswer` */
+
+DROP TABLE IF EXISTS `medicalanswer`;
 
 CREATE TABLE `medicalanswer` (
   `id` int(11) NOT NULL,
@@ -112,6 +146,10 @@ CREATE TABLE `medicalanswer` (
   CONSTRAINT `medicalanswer_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `primarycare` */
+
+DROP TABLE IF EXISTS `primarycare`;
+
 CREATE TABLE `primarycare` (
   `id` int(11) NOT NULL,
   `firstName` varchar(50) DEFAULT NULL,
@@ -127,6 +165,10 @@ CREATE TABLE `primarycare` (
   KEY `userId` (`userId`),
   CONSTRAINT `primarycare_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `providerconsultant` */
+
+DROP TABLE IF EXISTS `providerconsultant`;
 
 CREATE TABLE `providerconsultant` (
   `id` int(11) NOT NULL,
@@ -154,6 +196,10 @@ CREATE TABLE `providerconsultant` (
   CONSTRAINT `providerconsultant_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `insurancedetails` */
+
+DROP TABLE IF EXISTS `insurancedetails`;
+
 CREATE TABLE `insurancedetails` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
@@ -176,6 +222,10 @@ CREATE TABLE `insurancedetails` (
   CONSTRAINT `insurancedetails_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `emergencycontactinfo` */
+
+DROP TABLE IF EXISTS `emergencycontactinfo`;
+
 CREATE TABLE `emergencycontactinfo` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
@@ -190,6 +240,11 @@ CREATE TABLE `emergencycontactinfo` (
   KEY `userId` (`userId`),
   CONSTRAINT `emergency contactinfo_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `providerdetails` */
+
+DROP TABLE IF EXISTS `providerdetails`;
+
 
 CREATE TABLE `providerdetails` (
   `id` int(11) NOT NULL,
@@ -213,6 +268,11 @@ CREATE TABLE `providerdetails` (
   CONSTRAINT `providerdetails_ibfk_3` FOREIGN KEY (`ResidentialAddressId`) REFERENCES `address` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `providerleaves` */
+
+DROP TABLE IF EXISTS `providerleaves`;
+
+
 CREATE TABLE `providerleaves` (
   `id` int(11) NOT NULL,
   `providerId` int(11) DEFAULT NULL,
@@ -229,6 +289,11 @@ CREATE TABLE `providerleaves` (
   KEY `providerId` (`providerId`),
   CONSTRAINT `providerleaves_ibfk_2` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `appointment` */
+
+DROP TABLE IF EXISTS `appointment`;
+
 
 CREATE TABLE `appointment` (
   `id` int(11) NOT NULL,
@@ -250,6 +315,11 @@ CREATE TABLE `appointment` (
   CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `provideravailability` */
+
+DROP TABLE IF EXISTS `provideravailability`;
+
+
 CREATE TABLE `provideravailability` (
   `id` int(11) NOT NULL,
   `providerID` int(11) DEFAULT NULL,
@@ -265,6 +335,11 @@ CREATE TABLE `provideravailability` (
   KEY `providerID` (`providerID`),
   CONSTRAINT `provideravailability_ibfk_1` FOREIGN KEY (`providerID`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `providerappointment` */
+
+DROP TABLE IF EXISTS `providerappointment`;
+
 
 CREATE TABLE `providerappointment` (
   `id` int(11) NOT NULL,
@@ -290,6 +365,10 @@ CREATE TABLE `providerappointment` (
   CONSTRAINT `providerappointment_ibfk_2` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `providerbreaks` */
+
+DROP TABLE IF EXISTS `providerbreaks`;
+
 CREATE TABLE `providerbreaks` (
   `id` int(11) NOT NULL,
   `providerId` int(11) DEFAULT NULL,
@@ -304,6 +383,10 @@ CREATE TABLE `providerbreaks` (
   KEY `providerId` (`providerId`),
   CONSTRAINT `providerbreaks_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `generalnotification` */
+
+DROP TABLE IF EXISTS `generalnotification`;
 
 CREATE TABLE `generalnotification` (
   `id` int(11) NOT NULL,
@@ -321,6 +404,10 @@ CREATE TABLE `generalnotification` (
   KEY `receiverId` (`receiverId`),
   CONSTRAINT `generalnotification_ibfk_1` FOREIGN KEY (`receiverId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `patientdiagnosis` */
+
+DROP TABLE IF EXISTS `patientdiagnosis`;
 
 CREATE TABLE `patientdiagnosis` (
   `id` int(11) NOT NULL,
@@ -341,6 +428,10 @@ CREATE TABLE `patientdiagnosis` (
   CONSTRAINT `patientdiagnosis_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
   CONSTRAINT `patientdiagnosis_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `patientprescription` */
+
+DROP TABLE IF EXISTS `patientprescription`;
 
 CREATE TABLE `patientprescription` (
   `id` int(11) NOT NULL,
@@ -365,6 +456,11 @@ CREATE TABLE `patientprescription` (
   CONSTRAINT `patientprescription_ibfk_2` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `patientprocedure` */
+
+DROP TABLE IF EXISTS `patientprocedure`;
+
+
 CREATE TABLE `patientprocedure` (
   `id` int(11) NOT NULL,
   `providerId` int(11) DEFAULT NULL,
@@ -386,6 +482,10 @@ CREATE TABLE `patientprocedure` (
   CONSTRAINT `patientprocedure_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `patientrecommendation` */
+
+DROP TABLE IF EXISTS `patientrecommendation`;
+
 
 CREATE TABLE `patientrecommendation` (
   `id` int(11) DEFAULT NULL,
@@ -403,6 +503,10 @@ CREATE TABLE `patientrecommendation` (
   CONSTRAINT `patientrecommendation_ibfk_1` FOREIGN KEY (`providerId`) REFERENCES `user` (`userId`),
   CONSTRAINT `patientrecommendation_ibfk_2` FOREIGN KEY (`patientId`) REFERENCES `user` (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Table structure for table `providerconsultant` */
+
+DROP TABLE IF EXISTS `providerconsultant`;
 
 CREATE TABLE `providerconsultant` (
   `id` int(11) NOT NULL,
