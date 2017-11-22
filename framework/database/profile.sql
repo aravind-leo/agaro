@@ -134,7 +134,7 @@ CREATE TABLE `medicalanswer` (
   `medicalQuestionId` int(11) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `answer` varchar(500) DEFAULT NULL,
-  'type' varchar(100) DEFAULT NULL,
+  `type` varchar(100) DEFAULT NULL,
   `updatedBy` int(11) DEFAULT NULL,
   `updatedDate` datetime DEFAULT NULL,
   `createdBy` int(11) DEFAULT NULL,
