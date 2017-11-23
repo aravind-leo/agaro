@@ -24,7 +24,7 @@ echo "*****************************************".$config['database']['host'];
 
 $dbManager = new DBManager();
 $con = $dbManager->connect($config['database']['dbname']);
-
+/* 
 $sql = "insert into user (userId,email,password,userType,activeInd) values (?,?,?,?,?) ";
 
 $password = md5("123456");
@@ -32,3 +32,15 @@ $password = md5("123456");
 $params = array(1,'ageesh',$password,"patient",1);
 
 $dbManager->insertData($sql, $params);
+ */
+
+$sql = "select * from user where email = ? and password = ?";
+$password = md5("123456");
+$params = array('ageesh',$password);
+
+
+$resultArray  = $dbManager->getSelectedRow($sql, $params);
+
+var_dump($resultArray);
+
+
