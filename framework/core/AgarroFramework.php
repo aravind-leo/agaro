@@ -66,7 +66,7 @@ class AgarroFramework {
         $path = ROOT;
         $jsonStr = file_get_contents("$path/application/config/config.json");
          // if you put json_decode($jsonStr, true), it will convert the json string to associative array
-        $GLOBALS['config']  = json_decode($jsonStr);
+        $GLOBALS['config']  = json_decode($jsonStr,true);
         
         $agaroConfig =    $GLOBALS['config'] ;
        // var_dump($GLOBALS['config']);

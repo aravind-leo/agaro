@@ -10,17 +10,17 @@ class DBManager {
     
     public function __construct(){
         $DBconfig = $GLOBALS['config'];
-        $this->host = $DBconfig->database->host;
-        $this->dbname =  $DBconfig->database->agarro;
-        $this->username =  $DBconfig->database->user;
-        $this->password =  $DBconfig->database->password;
+        $this->host = $DBconfig['database']['host'];
+        $this->dbname =  $DBconfig['database']['dbname'];
+        $this->username =  $DBconfig['database']['user'];
+        $this->password =  $DBconfig['database']['password'];
     } 
     /*
      * 
      * By default it will connect with the config db, we can specify different DB as parameter
      * 
      */
-    public function connect($dbname = $this->dbname)
+    public function connect($dbname)
     {
         $charset = 'utf8mb4';
         
@@ -30,13 +30,13 @@ class DBManager {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
         ];
-        $this->pdo = new PDO($dsn, $user, $pass, $opt);
+        $this->pdo = new PDO($dsn, $this->username, $this->password, $opt);
         
-        $this->con = mysql_connect(  $this->host,  $this->username, $this->password)
-        or die ("<br/>Could not connect to MySQL server");
+       // $this->con = mysql_connect(  $this->host,  $this->username, $this->password)
+        //or die ("<br/>Could not connect to MySQL server");
         
-        mysql_select_db($dbname ,$this->con)
-        or die ("<br/>Could not select the indicated database");
+       // mysql_select_db($dbname ,$this->con)
+       // or die ("<br/>Could not select the indicated database");
         
         return  $this->pdo;
     }
