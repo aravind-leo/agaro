@@ -12,6 +12,6 @@
 			    "guest" : ""
 			    
     }],
-    "controllers" : {"index" : "IndexController","patient" :"PatientController"}
+    "controllers" : {"index" : "IndexController","patient" :"PatientController","user":"UserController"}
     
 }
