@@ -93,8 +93,9 @@ class AgarroFramework {
             // Here simply autoload app’s controller and model classes
         $config = $GLOBALS['config'];
         
-        if (isset($config->controllers->$classname)) {
-            $class = print_r($config->controllers->$classname,1);
+        if (isset($config['controllers'][$classname])) {
+            //$class = print_r($config->controllers->$classname,1);
+            $class = $config['controllers'][$classname];
             require_once CONTROLLER_PATH . "$class.php";
             return $class;
            

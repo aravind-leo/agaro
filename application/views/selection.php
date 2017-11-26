@@ -8,7 +8,7 @@
 			<div class="col-sm-1"></div>
 			<div class="col-sm-3">
 				<div class="card">
-					<a href="login_section_patient.html"> <span
+					<a href="../user/login"> <span
 						class="img-container text-center"> <span class="app-11"></span>
 					</span>
 						<div class="card-block">
