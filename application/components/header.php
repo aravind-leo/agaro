@@ -1,16 +1,19 @@
 <?php
 
-$user = "guest";
+$user = "login";
 ?>
-<html>
+
+
+
+ <html>
 
 <head>
 <title>Health Scheduler</title>
-<link href="http://localhost:8080/test/public/css/style.css" type="text/css" rel="stylesheet">
+<link href="http://localhost/public/css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 
-<body>
+<body> 
 
 <?php
 if($user == "guest")
@@ -142,3 +145,10 @@ if($user == "patient"){
     </div>
 
 <?php } ?>
+
+<?php 
+if($user = "login")
+{
+    
+}
+?>

@@ -12,7 +12,7 @@ class UserController extends Controller {
         {
             $password = md5($_POST['password']);
             $user = $_POST['email'];
-            $dal = new UserDAL();
+            $dal = new UserDAL(); 
             $userArray = $dal->userAuthenticate($user, $password);
             
             if(!empty($userArray)){
@@ -26,10 +26,17 @@ class UserController extends Controller {
         
     }
     
+   
+    
     
     public function loginAction()
     {
         include VIEW_PATH.'login.php';
+    }
+    
+    public function createAction()
+    {
+        include VIEW_PATH.'register.php';
     }
     
     

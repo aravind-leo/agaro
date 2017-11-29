@@ -1,4 +1,5 @@
 <?php
+
 require_once  FRAMEWORK_PATH . 'database/DBManager.php';
 
 
@@ -20,6 +21,10 @@ class UserDAL {
         $params = array($user,$password);
         $resultArray  = $dbManager->getSelectedRow($sql, $params);
         return $resultArray;
+    }
+    public function createAccount()
+    {
+        
     }
     
     
