@@ -29,7 +29,7 @@
 </div>
 <div class="form-options">
 <a href="javascript:;" class="pull-left">Forgot Password ?</a>
-<a href="../user/login/register" class="pull-right">Create Your Account</a>
+<a href="../user/register" class="pull-right">Create Your Account</a>
 </div>
 
 </form>

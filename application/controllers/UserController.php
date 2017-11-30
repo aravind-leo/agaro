@@ -34,7 +34,7 @@ class UserController extends Controller {
         include VIEW_PATH.'login.php';
     }
     
-    public function createAction()
+    public function registerAction()
     {
         include VIEW_PATH.'register.php';
     }
