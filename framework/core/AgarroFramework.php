@@ -74,7 +74,7 @@ class AgarroFramework {
       
         session_start();
         
-        include COMPONENT_PATH."header.php";
+        
         
         
     }
@@ -116,10 +116,12 @@ class AgarroFramework {
             if(isset($url_array[0]) && !empty($url_array[0]))
             {
                 $controller = $url_array[0];
+                
+                $_SESSION['type']=$controller;
                  array_shift($url_array);
             }
             
-            
+            include COMPONENT_PATH."header.php";
             // The second part is the method name
             //$action = isset($url_array[0]) ? $url_array[0] : '';
             if(isset($url_array[0]) && !empty($url_array[0]) ){

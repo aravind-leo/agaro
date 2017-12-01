@@ -1,6 +1,8 @@
 <?php
 
-$user = "patient";
+
+$user = $_SESSION['type'];
+
 ?>
 
 
@@ -147,7 +149,7 @@ if($user == "patient"){
 <?php } ?>
 
 <?php 
-if($user = "login")
+if($user == "user")
 {
     
 }
