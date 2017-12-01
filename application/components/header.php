@@ -12,6 +12,8 @@ $user = $_SESSION['type'];
 <head>
 <title>Health Scheduler</title>
 <link href="http://localhost/public/css/style.css" type="text/css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="http://localhost:8080/test/public/js/aggaro.js" ></script>
 
 </head>
 

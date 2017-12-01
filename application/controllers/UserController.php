@@ -6,7 +6,7 @@ require_once APP_PATH.'controllers/Controller.php';
 
 class UserController extends Controller {
     
-    public function authentication(){
+    public function authenticationAction(){
         
         if( isset($_POST['email']) && isset($_POST['password'])   )
         {
@@ -20,8 +20,13 @@ class UserController extends Controller {
                 $_SESSION['user'] = $userArray;
             }
             
-            
-            
+            include VIEW_PATH.'/patient/patientProfileView.php';
+        }
+        else {
+        
+            $isLoginFailed = true;
+            $errorMsg  = "Please enter valid credentials";
+            include VIEW_PATH.'login.php';
         }
         
     }
@@ -40,7 +45,7 @@ class UserController extends Controller {
     }
     
     
-    public function logout(){
+    public function logoutAction(){
         session_destroy();
         include  VIEW_PATH . "logout.php";
         

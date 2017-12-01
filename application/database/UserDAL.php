@@ -7,11 +7,11 @@ require_once  FRAMEWORK_PATH . 'database/DBManager.php';
 class UserDAL {
     
     private $con;
-    
+    private $dbManager;
     public function __construct(){
-     
-        $dbManager = new DBManager();
-        $this->con = $dbManager->connect($config['database']['dbname']);
+        $config = $GLOBALS['config'];
+        $this->dbManager = new DBManager();
+        $this->con = $this->dbManager->connect($config['database']['dbname']);
         
     }
     
@@ -19,7 +19,7 @@ class UserDAL {
     {
         $sql = "select * from user where email = ? and password = ?";
         $params = array($user,$password);
-        $resultArray  = $dbManager->getSelectedRow($sql, $params);
+        $resultArray  = $this->dbManager->getSelectedRow($sql, $params);
         return $resultArray;
     }
     public function createAccount()
