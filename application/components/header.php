@@ -1,6 +1,6 @@
 <?php
 
-$user = "login";
+$user = "patient";
 ?>
 
 
@@ -45,11 +45,11 @@ if($user == "patient"){
                 <ul class="list-unstyled list-inline m-0">
                     <li class="list-inline-item dropdown">
                             <button class="btn btn-secondary book-text" data-toggle="modal" data-target="#book-appointment">Book Appointment</button>
-                            <a class="book-icon" data-toggle="modal" data-target="#book-appointment"><img src="../assets/images/book-icon.png" width="20" alt=""></a>
+                            <a class="book-icon" data-toggle="modal" data-target="#book-appointment"><img src="http://localhost/public/images/book-icon.png" width="20" alt=""></a>
                     </li>
                     <li class="list-inline-item dropdown">
                         <div class="dropdown">
-                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="../assets/images/notification-icon.png" width="20" alt="">
+                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="http://localhost/public/images/notification-icon.png" width="20" alt="">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
                                 <li><a href="#">Regularly beginning at age 20 with risk factores</a></li>
@@ -66,7 +66,7 @@ if($user == "patient"){
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="../selection.html">Logout</a></li>
+                                <li><a href="../index">Logout</a></li>
                             </ul>
                         </div>
                     </li>
@@ -80,11 +80,11 @@ if($user == "patient"){
 
     <div class="sub-header">
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="patient-profile.html">My Profile</a></li>
-            <li role="presentation"><a href="my-visit.html">My Visit</a></li>
-            <li role="presentation"><a href="my-payments.html">My Payments</a></li>
-            <li role="presentation"><a href="my-notification.html">My Notfications</a></li>
-            <li role="presentation"><a href="my-history.html">My Medical History</a></li>
+            <li role="presentation" class="active"><a href="../patient/patientProfileView">My Profile</a></li>
+            <li role="presentation"><a href="../patient/myVisit">My Visit</a></li>
+            <li role="presentation"><a href="../patient/myPayments">My Payments</a></li>
+            <li role="presentation"><a href="../patient/myNotification">My Notfications</a></li>
+            <li role="presentation"><a href="../patient/myHistory">My Medical History</a></li>
         </ul>
     </div>
     <?php }
@@ -104,7 +104,7 @@ if($user == "patient"){
                    
                     <li class="list-inline-item dropdown">
                         <div class="dropdown">
-                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="../assets/images/notification-icon.png" width="20" alt="">
+                            <a class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="http://localhost/public/images/notification-icon.png" width="20" alt="">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-custom dropdown-menu-right">
                                 <li><a href="#"><strong>John Doe </strong> Medical Records successfully shared with John Doe PCP. </a></li>
@@ -121,7 +121,7 @@ if($user == "patient"){
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="../selection.html">Logout</a></li>
+                                <li><a href="../index">Logout</a></li>
                             </ul>
                         </div>
                     </li>

@@ -25,7 +25,7 @@
 </label>
 </div>
 <div class="button-container">
-<a href="patient/patient-profile-view.html" class="btn btn-block btn-primary" type="button"><span>Login</span></a>
+<a href="../patient/patientProfileView" class="btn btn-block btn-primary" type="button"><span>Login</span></a>
 </div>
 <div class="form-options">
 <a href="javascript:;" class="pull-left">Forgot Password ?</a>
