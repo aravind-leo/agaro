@@ -119,12 +119,12 @@ class DBManager {
         $stmt->execute($params);
         }
         catch (PDOException $e) {
-            var_dump($e.getMessage());
+            var_dump($e->getMessage());
             
             if ($e->getCode() == 1062) {
                 // Take some action if there is a key constraint violation, i.e. duplicate name
             } else {
-                var_dump($e.getMessage());
+                var_dump($e->getMessage());
                 throw $e;
             }
         }

@@ -2,13 +2,13 @@
 class AgarroFramework {
     
     
-    public static function run($url) {
+    public static function run() {
         
         self::init();
         
         self::autoload();
         
-        self::dispatch($url);
+        self::dispatch();
         
         include COMPONENT_PATH."footer.php";
     }
@@ -16,15 +16,6 @@ class AgarroFramework {
     
     private static function init() {
         
-        define("DS", DIRECTORY_SEPARATOR);
-        
-        define("ROOT", getcwd() . DS);
-        
-        define("APP_PATH", ROOT . 'application' . DS);
-        
-        define("FRAMEWORK_PATH", ROOT . "framework" . DS);
-        
-        define("PUBLIC_PATH", ROOT . "public" . DS);
         
         
         define("CONFIG_PATH", APP_PATH . "config" . DS);
@@ -72,9 +63,7 @@ class AgarroFramework {
        // var_dump($GLOBALS['config']);
         
       
-        session_start();
-        
-        
+        include COMPONENT_PATH."header.php";
         
         
     }
@@ -104,10 +93,12 @@ class AgarroFramework {
     
     
     
-    private static function dispatch($url) {
+    private static function dispatch() {
         $url_array = array();
         $controller = "index";
         $action = "indexAction";
+        $url = isset($_GET['url']) ? $_GET['url'] : '';
+        
         if (isset($url) && ! empty($url)) {
             $url_array = explode("/", $url);
             
@@ -116,12 +107,10 @@ class AgarroFramework {
             if(isset($url_array[0]) && !empty($url_array[0]))
             {
                 $controller = $url_array[0];
-                
-                $_SESSION['type']=$controller;
                  array_shift($url_array);
             }
             
-            include COMPONENT_PATH."header.php";
+            
             // The second part is the method name
             //$action = isset($url_array[0]) ? $url_array[0] : '';
             if(isset($url_array[0]) && !empty($url_array[0]) ){
@@ -136,9 +125,18 @@ class AgarroFramework {
         
        $object = self::load($controller);
        $obj = new $object; 
+       try {
        $obj->{ $action }();
+           
+       } catch (Exception $e) 
+       {
+           var_dump($e->getMessage());
+       }
         
     }
+    
+    
+    
     
 }
 

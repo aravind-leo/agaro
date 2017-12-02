@@ -6,7 +6,19 @@ require_once APP_PATH.'controllers/Controller.php';
 
 class UserController extends Controller {
     
+    private $log;
+    
+    public function __construct(){
+        $this->log = Logger::getLogger(__CLASS__);
+    }
+    
+    
     public function authenticationAction(){
+        
+        
+        $this->log->info("Inside user Controller");
+        
+        //check if session is active and its same user, then no need to login again
         
         if( isset($_POST['email']) && isset($_POST['password'])   )
         {
@@ -16,14 +28,19 @@ class UserController extends Controller {
             $userArray = $dal->userAuthenticate($user, $password);
             
             if(!empty($userArray)){
+                
+                if(!isset($_SESSION['user']))
+                {
+                    $this->log->info("Login successfull, create session");
                 session_start();
                 $_SESSION['user'] = $userArray;
+                }
             }
             
             include VIEW_PATH.'/patient/patientProfileView.php';
         }
         else {
-        
+            $this->log->info("Login error, show the login page again");
             $isLoginFailed = true;
             $errorMsg  = "Please enter valid credentials";
             include VIEW_PATH.'login.php';
@@ -46,6 +63,8 @@ class UserController extends Controller {
     
     
     public function logoutAction(){
+        $this->log->info("Callig log out, will destroy session and sends user out of application");
+        
         session_destroy();
         include  VIEW_PATH . "logout.php";
         
