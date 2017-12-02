@@ -7,8 +7,8 @@ USE `agarro`;
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
-  `userId` int(11) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL ,
   `password` varchar(100) DEFAULT NULL,
   `userType` varchar(100) DEFAULT NULL,
   `lastLoggedIn` datetime DEFAULT NULL,
@@ -19,6 +19,8 @@ CREATE TABLE `user` (
   `createdBy` int(11) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `user` ADD UNIQUE(`email`);
 
 /*Table structure for table `state` */
 
