@@ -1,8 +1,12 @@
 <?php
 class AgarroFramework {
     
+    private static $log;
     
+   
     public static function run() {
+        
+        self::$log = Logger::getLogger(__CLASS__);
         
         self::init();
         
@@ -44,15 +48,7 @@ class AgarroFramework {
         define("SERVICE_PATH", APP_PATH. "service". DS);
         
         
-        // Load core classes
-        
-     /*    require CORE_PATH . "Controller.class.php";
-        
-        require CORE_PATH . "Loader.class.php";
-        
-        require DB_PATH . "Mysql.class.php";
-        
-        require CORE_PATH . "Model.class.php"; */
+        require_once APP_PATH.'controllers/ErrorController.php';
    
         $path = ROOT;
         $jsonStr = file_get_contents("$path/application/config/config.json");
@@ -89,6 +85,11 @@ class AgarroFramework {
             return $class;
            
           }
+          else {
+              
+              self::$log->info('Called class is not available. Redirecting to error page');
+              throw new AgarroControllerException($classname . ' class not exists');
+          }
     }
     
     
@@ -123,14 +124,19 @@ class AgarroFramework {
             $query_string = $url_array;
         } 
         
-       $object = self::load($controller);
-       $obj = new $object; 
+      
        try {
-       $obj->{ $action }();
+           $object = self::load($controller);
+           $obj = new $object; 
+            $obj->{ $action }();
            
-       } catch (Exception $e) 
+       } catch (AgarroControllerException $e) 
        {
-           var_dump($e->getMessage());
+           
+           self::$log->info('Called method is not available. Redirecting to error page '.$e->getMessage());
+           $errorObj = new ErrorController();
+           $errorObj->indexAction();
+          // var_dump($e->getMessage());
        }
         
     }

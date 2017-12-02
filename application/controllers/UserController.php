@@ -2,6 +2,8 @@
 
 require_once APP_PATH. 'database/UserDAL.php';
 require_once APP_PATH.'controllers/Controller.php';
+require_once APP_PATH.'controllers/AgarroControllerException.php';
+
 
 
 class UserController extends Controller {

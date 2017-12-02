@@ -14,6 +14,12 @@ class Controller{
         
     }
     
+    public function __call($name, $arguments) {
+        if (!method_exists($this, $name)) {
+            throw new AgarroControllerException($name . ' Method not exists');
+        }
+    }
+    
     
     public function redirect($url,$message,$wait = 0){
         
