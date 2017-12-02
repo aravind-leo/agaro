@@ -50,6 +50,15 @@ class UserController extends Controller {
         
     }
     
+    public function createAction(){
+        if(isset($_POST) && sizeof($_POST) > 0)
+        {
+            $dal = new UserDAL();
+            $userArray = $dal->createAccount($_POST);
+            
+            
+        }
+    }
    
     
     

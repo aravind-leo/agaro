@@ -87,7 +87,7 @@ class AgarroFramework {
           }
           else {
               
-              self::$log->info('Called class is not available. Redirecting to error page');
+              self::$log->info('Called class is not available. Redirecting to error page '.$classname);
               throw new AgarroControllerException($classname . ' class not exists');
           }
     }

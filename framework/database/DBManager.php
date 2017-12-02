@@ -116,7 +116,9 @@ class DBManager {
         } */
         try{
             $stmt =  $this->pdo->prepare($sql);
-        $stmt->execute($params);
+            $stmt->execute($params);
+            $insert_id =  $this->pdo->lastInsertId();
+            return $insert_id;
         }
         catch (PDOException $e) {
             var_dump($e->getMessage());
@@ -127,6 +129,9 @@ class DBManager {
                 var_dump($e->getMessage());
                 throw $e;
             }
+        }
+        catch (Exception $e){
+            throw new AgarroControllerException($e->getMessage() . ' DB Error');
         }
     }
     
