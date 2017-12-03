@@ -37,6 +37,11 @@ class UserController extends Controller {
                 session_start();
                 $_SESSION['user'] = $userArray;
                 }
+            }else{
+                $this->log->info("Login error, show the login page again");
+                $isLoginFailed = true;
+                $errorMsg  = "Please enter valid credentials";
+                include VIEW_PATH.'login.php';
             }
             
             include VIEW_PATH.'/patient/patientProfileView.php';
