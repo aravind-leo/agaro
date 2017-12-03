@@ -1,6 +1,7 @@
 <?php
-
 require_once  FRAMEWORK_PATH . 'database/DBManager.php';
+require_once APP_PATH.'controllers/AgarroControllerException.php';
+
 
 
 
@@ -53,7 +54,7 @@ class UserDAL {
         }
         
         if(isset($postArray['phone'])){
-          $phone = $postArray['phone'];
+          $phone = intval($postArray['phone']);
         }
         if(isset($postArray['state'])){
           $state= $postArray['state'];
@@ -63,19 +64,27 @@ class UserDAL {
         }
         
         // $db->prepare("INSERT INTO usersdata (Firstname, Lastname, Email,Passward) VALUES (:name, :lstname, :email,:pass)");
+        $this->con->beginTransaction();
         
+        try{
         $sql = "insert into user (email,password,userType,activeInd,lastLoggedIn,createdDate,updatedDate) values (?,?,?,?,now(),now(),now()) ";
         $params = array($mail,md5($pwd),$user,1);
         $userId =  $this->dbManager->insertData($sql, $params);
         
-        $addressSql = "insert into address(id,userId,homePhone) values(?,?,?)";
-        $addParams = array(1,$userId,$phone);
-        $this->dbManager->insertData($sql, $addParams);
+        $addressSql = "insert into address(userId,homePhone) values(?,?)";
+        $addParams = array($userId,$phone);
+        $this->dbManager->insertData($addressSql, $addParams);
         
-        $userQuery = "insert into userdetails(id,userId,dob,gender,contactEmail,firstName,lastName) values(?,?,?,?,?,?,?)";
-        $userParams = array(1,$userId,$dob,$gender,$mail,$name,$lName);
-        $this->dbManager->insertData($sql, $userParams);
+        $userQuery = "insert into userdetails(userId,dob,gender,contactEmail,firstName,lastName) values(?,?,?,?,?,?)";
+        $userParams = array($userId,$dob,$gender,$mail,$name,$lName);
+        $this->dbManager->insertData($userQuery, $userParams);
         
+        $this->con->commit();
+        }
+        catch (PDOException $pd){
+            $this->con->rollBack();
+            throw new AgarroControllerException($pd->getMessage() . ' User not created');
+        }
         
     }
     

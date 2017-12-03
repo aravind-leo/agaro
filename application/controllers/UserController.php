@@ -61,7 +61,7 @@ class UserController extends Controller {
             $dal = new UserDAL();
             $userArray = $dal->createAccount($_POST);
             
-            
+            include VIEW_PATH.'/patient/patientProfileView.php';
         }
     }
    
