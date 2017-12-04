@@ -48,8 +48,8 @@
 							<form>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<input type="text" id="name" name="name" required="required"> <label
-											for="input" class="control-label">Patient Name:</label><i
+										<input type="text" id="name" name="name" required="required">
+										<label for="input" class="control-label">Patient Name:</label><i
 											class="bar"></i>
 									</div>
 									<div class="form-group">
@@ -75,17 +75,17 @@
 											Gender</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="aLine1" name="aLine1" required="required"> <label
-											for="input" class="control-label">Address Line 1</label><i
-											class="bar"></i>
+										<input type="text" id="aLine1" name="aLine1"
+											required="required"> <label for="input" class="control-label">Address
+											Line 1</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Address Line 2:</label><i
-											class="bar"></i>
+										<input type="text" id="aLine2" name="aLine2"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Address Line 2:</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<select>
+										<select id="state" name="state">
 											<option>Nova Scotia</option>
 											<option>Torronto</option>
 											<option>British Columbia</option>
@@ -97,13 +97,13 @@
 								<div class="col-sm-1"></div>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<select>
+										<select id="city" name="city">
 											<option>Nova Waterford</option>
 										</select> <label class="control-label" for="select">Select
 											City</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
+										<input type="text" id="zip" name="zip" required="required"> <label
 											for="pwd" for="input" class="control-label">ZIP Code:</label><i
 											class="bar"></i>
 									</div>
@@ -112,18 +112,18 @@
                                             <label for="input" class="control-label">Residential Address:</label><i class="bar"></i>
                                         </div> -->
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Home:</label><i
-											class="bar"></i>
+										<input type="text" id="hPhone" name="hPhone"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Home Phone:</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">Work Phone</label><i
-											class="bar"></i>
+										<input type="text" id="wPhone" name="wPhone"
+											required="required"> <label for="input" class="control-label">Work
+											Phone</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Email:</label><i
+										<input type="text" id="email" name="email" required="required">
+										<label for="pwd" for="input" class="control-label">Email:</label><i
 											class="bar"></i>
 									</div>
 								</div>
@@ -142,68 +142,6 @@
 						</div>
 					</div>
 
-				</div>
-				<div role="tabpanel" class="tab-pane" id="tab2">
-					<div class="patient-form">
-						<div class="form-container">
-							<form>
-								<div class="col-sm-5">
-									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">BP:</label><i class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Temp:</label><i
-											class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">Ht:</label><i class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">BMI:</label><i
-											class="bar"></i>
-									</div>
-									<p>
-										<a href="javascript:;" class="mar-right-sm">Add </a> <a
-											href="javascript:;"> Delete</a>
-									</p>
-
-								</div>
-
-								<div class="col-sm-1"></div>
-								<div class="col-sm-5">
-									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">HR:</label><i class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">RR:</label><i
-											class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">WT:</label><i class="bar"></i>
-									</div>
-
-								</div>
-								<div class="col-sm-1"></div>
-								<div class="clr"></div>
-								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
-									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
-									</div>
-									<div class="clr"></div>
-								</div>
-							</form>
-						</div>
-					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="tab3">
 					<div class="patient-form">
