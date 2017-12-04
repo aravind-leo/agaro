@@ -1,7 +1,7 @@
 <?php
 
 
-$user = patient;
+$user = 'patient';
 
 ?>
 

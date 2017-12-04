@@ -30,4 +30,9 @@ class PatientController extends Controller{
         include VIEW_PATH.'patient/myVisit.php';
     }
     
+    public function patientProfileAction()
+    {
+        include VIEW_PATH.'patient/patientProfile.php';
+    }
+    
 }

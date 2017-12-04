@@ -5,7 +5,7 @@
 
     <div class="container pat-main-container">
         <div class="profile-main-btn">
-            <a href="patient-profile.html" class="btn btn-secondary">Edit</a>
+            <a href="../patient/patientProfile" class="btn btn-secondary">Edit</a>
             <!-- <button class="btn btn-primary">Save</button> -->
         </div>
         <div class="col-sm-2 text-sm-center">
