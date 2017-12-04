@@ -1,7 +1,7 @@
 <?php
 
 
-$user = $_SESSION['type'];
+$user = patient;
 
 ?>
 

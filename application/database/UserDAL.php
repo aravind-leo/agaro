@@ -68,7 +68,8 @@ class UserDAL {
         
         try{
         $sql = "insert into user (email,password,userType,activeInd,lastLoggedIn,createdDate,updatedDate) values (?,?,?,?,now(),now(),now()) ";
-        $params = array($mail,md5($pwd),$user,1);
+        $ps = md5($pwd);
+        $params = array($mail,$ps,$user,1);
         $userId =  $this->dbManager->insertData($sql, $params);
         
         $addressSql = "insert into address(userId,homePhone) values(?,?)";

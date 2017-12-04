@@ -21,7 +21,7 @@
                     <label for="input" class="control-label">Last Name:</label><i class="bar"></i>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="dob" name="dob" required="required">
+                    <input type="date" id="dob" name="dob" required="required">
                     <label for="input" class="control-label">DOB</label><i class="bar"></i>
                 </div>
                 <div class="form-group">
