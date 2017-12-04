@@ -130,11 +130,9 @@
 								<div class="col-sm-1"></div>
 								<div class="clr"></div>
 								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
+									
 									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
+										<button class="btn btn-primary">Save</button>
 									</div>
 									<div class="clr"></div>
 								</div>
@@ -187,11 +185,9 @@
 								<div class="col-sm-1"></div>
 								<div class="clr"></div>
 								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
+									
 									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
+										<button class="btn btn-primary">Save</button>
 									</div>
 									<div class="clr"></div>
 								</div>
@@ -210,32 +206,35 @@
 								</div>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">Insurance Company Name</label><i
+										<input type="text" id="insCName" name="insCName"
+											required="required"> <label for="input" class="control-label">Insurance
+											Company Name</label><i class="bar"></i>
+									</div>
+									<div class="form-group">
+										<input type="text" id="insIdName" name="insIdName"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Insurance ID Number:</label><i
 											class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Insurance ID
-											Number:</label><i class="bar"></i>
-									</div>
-									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Group Number:</label><i
-											class="bar"></i>
+										<input type="text" id="grpNum" name="grpNum"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Group Number:</label><i class="bar"></i>
 									</div>
 								</div>
 								<div class="col-sm-1"></div>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Effective Start
-											Date:</label><i class="bar"></i>
+										<input type="text" id="effStart" name="effStart"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Effective Start Date:</label><i
+											class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Effective End
-											Date:</label><i class="bar"></i>
+										<input type="text" id="effEnd" name="effEnd"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Effective End Date:</label><i
+											class="bar"></i>
 									</div>
 
 								</div>
@@ -252,14 +251,15 @@
 										<div class="col-sm-3" style="padding-left: 0px;">
 											<div class="radio">
 
-												<label> <input type="radio" name="radio" /><i class="helper"></i>Yes
+												<label> <input type="radio" id="nameYes" name="nameYes" /><i
+													class="helper"></i>Yes
 												</label>
 											</div>
 										</div>
 										<div class="col-sm-3">
 											<div class="radio">
-												<label> <input type="radio" name="radio" checked="checked" /><i
-													class="helper"></i>No
+												<label> <input type="radio" id="nameNo" name="nameNo"
+													checked="checked" /><i class="helper"></i>No
 												</label>
 											</div>
 										</div>
@@ -269,15 +269,16 @@
 								<div class="col-sm-5">
 
 									<div class="form-group">
-										<select>
+										<select id="patientRel" name="patientRel">
 											<option>1. Spouse</option>
+											<option>2. Daughter</option>
 										</select> <label class="control-label" for="select">Patient
 											relationship with subscriber</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Subscriber Name:</label><i
-											class="bar"></i>
+										<input type="text" id="subName" name="subName"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">Subscriber Name:</label><i class="bar"></i>
 									</div>
 									<div class="clr"></div>
 									<a href="javascript:;"> Add Secondary Insurance </a>
@@ -286,12 +287,12 @@
 								<div class="col-sm-5">
 
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">DOB:</label><i
-											class="bar"></i>
+										<input type="text" id="subDob" name="subDob"
+											required="required"> <label for="pwd" for="input"
+											class="control-label">DOB:</label><i class="bar"></i>
 									</div>
 									<div class="form-group">
-										<select>
+										<select id="subGender" name="subGender">
 											<option>Male</option>
 											<option>Female</option>
 											<option>Other</option>
@@ -303,11 +304,9 @@
 
 								<div class="clr"></div>
 								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
+
 									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
+										<button class="btn btn-primary">Save</button>
 									</div>
 									<div class="clr"></div>
 								</div>
@@ -321,14 +320,14 @@
 							<form>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<input type="text" id="email" required="required"> <label
-											for="input" class="control-label">Guardian/Authorized
+										<input type="text" id="guardianName" name="guardianName"
+											required="required"> <label for="input" class="control-label">Guardian/Authorized
 											Representative Name:</label><i class="bar"></i>
 									</div>
 
 
 									<div class="form-group">
-										<select>
+										<select id="guardianRelation" name="guardianRelation">
 											<option>Father</option>
 											<option>Mother</option>
 											<option>Sibling</option>
@@ -342,19 +341,17 @@
 								<div class="col-sm-1"></div>
 								<div class="col-sm-5">
 									<div class="form-group">
-										<input type="text" id="pwd" required="required"> <label
-											for="pwd" for="input" class="control-label">Emergency contact
-											number</label><i class="bar"></i>
+										<input type="text" id="emergencyContact"
+											name="emergencyContact" required="required"> <label for="pwd"
+											for="input" class="control-label">Emergency contact number</label><i
+											class="bar"></i>
 									</div>
 								</div>
 								<div class="col-sm-1"></div>
 								<div class="clr"></div>
 								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
 									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
+										<button class="btn btn-primary">Save</button>
 									</div>
 									<div class="clr"></div>
 								</div>
@@ -399,11 +396,9 @@
 
 								<div class="clr"></div>
 								<div class="btn-container">
-									<div class="pull-left">
-										<button class="btn btn-secondary">Prev</button>
-									</div>
+									
 									<div class="pull-right">
-										<button class="btn btn-primary">Next</button>
+										<button class="btn btn-primary">Save</button>
 									</div>
 									<div class="clr"></div>
 								</div>
